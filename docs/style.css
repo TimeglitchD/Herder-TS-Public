@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#app {
+    --border-thickness: calc(100vw / 60);
+    --ratio-width: 16;
+    --ratio-height: 9;
+    --smallest-side: min((100vw - var(--border-thickness) * 2) / var(--ratio-width), (100vh - var(--border-thickness) * 2) / var(--ratio-height));
+    --new-width: calc(var(--smallest-side) * var(--ratio-width));
+    --new-height: calc(var(--smallest-side) * var(--ratio-height));
+    width: var(--new-width);
+    height: var(--new-height);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: var(--border-thickness) solid;
+    border-bottom: 0;
+    border-image: url('assets/fence.png') 240 round;
+}
+
+#app-border {
+    --border-thickness: calc(100vw / 60);
+    --ratio-width: 16;
+    --ratio-height: 9;
+    --smallest-side: min((100vw - var(--border-thickness) * 2) / var(--ratio-width), (100vh - var(--border-thickness) * 2) / var(--ratio-height));
+    --new-width: calc(var(--smallest-side) * var(--ratio-width));
+    --new-height: calc(var(--smallest-side) * var(--ratio-height) - var(--border-thickness) / 2);
+    width: var(--new-width);
+    margin: var(--border-thickness);
+    margin-top: calc(var(--new-height) + var(--border-thickness));
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    border-bottom: var(--border-thickness) solid;
+    border-image: url('./assets/fence.png') 240 round;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spritePosition {
+    margin: 10px 0 0 10px;
+    font-size: 0.8em;
+}
+
+.button {
+    width: 140px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #000000;
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid rgba(255, 255, 255, 0.87);
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        border: 1px solid #0ec3c9;
+        color: #0ec3c9;
+    }
+
+    &:active {
+        background-color: #0ec3c9;
+    }
+
+    /* Disabled styles */
+
+    &:disabled {
+        cursor: not-allowed;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
